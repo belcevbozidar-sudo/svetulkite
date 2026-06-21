@@ -11,14 +11,17 @@ window.addEventListener('scroll', () => {
 // mobile nav
 const burger = document.getElementById('burger');
 const mobileNav = document.getElementById('mobileNav');
+const mobileNavClose = document.getElementById('mobileNavClose');
 
 function closeMobileNav() {
   mobileNav.classList.remove('open');
   burger.classList.remove('open');
+  document.body.classList.remove('menu-open');
 }
 function openMobileNav() {
   mobileNav.classList.add('open');
   burger.classList.add('open');
+  document.body.classList.add('menu-open');
 }
 
 burger.addEventListener('click', (e) => {
@@ -29,6 +32,13 @@ burger.addEventListener('click', (e) => {
     openMobileNav();
   }
 });
+
+if (mobileNavClose) {
+  mobileNavClose.addEventListener('click', (e) => {
+    e.stopPropagation();
+    closeMobileNav();
+  });
+}
 
 mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMobileNav));
 
