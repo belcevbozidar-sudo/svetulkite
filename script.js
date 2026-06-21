@@ -11,10 +11,41 @@ window.addEventListener('scroll', () => {
 // mobile nav
 const burger = document.getElementById('burger');
 const mobileNav = document.getElementById('mobileNav');
-burger.addEventListener('click', () => {
-  mobileNav.classList.toggle('open');
+
+function closeMobileNav() {
+  mobileNav.classList.remove('open');
+  burger.classList.remove('open');
+}
+function openMobileNav() {
+  mobileNav.classList.add('open');
+  burger.classList.add('open');
+}
+
+burger.addEventListener('click', (e) => {
+  e.stopPropagation();
+  if (mobileNav.classList.contains('open')) {
+    closeMobileNav();
+  } else {
+    openMobileNav();
+  }
 });
-mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileNav.classList.remove('open')));
+
+mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMobileNav));
+
+const logoLink = document.getElementById('logoLink');
+if (logoLink) logoLink.addEventListener('click', closeMobileNav);
+
+// close on click/tap anywhere outside the open mobile nav
+document.addEventListener('click', (e) => {
+  if (!mobileNav.classList.contains('open')) return;
+  if (mobileNav.contains(e.target) || burger.contains(e.target)) return;
+  closeMobileNav();
+});
+
+// close on Escape
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeMobileNav();
+});
 
 // reveal-on-scroll for sections
 const revealTargets = document.querySelectorAll('.story-text, .story-media, .room-card, .stat-pill, .amenities-content, .amenities-media, .region-media, .region-text, .price-card, .contact-card');
