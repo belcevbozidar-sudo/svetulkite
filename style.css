@@ -75,11 +75,12 @@ p{margin:0;}
   max-width:1240px;margin:0 auto;padding:18px 28px;
   display:flex;align-items:center;justify-content:space-between;
 }
-.logo{display:flex;align-items:center;gap:10px;color:#fff;transition:color .4s;cursor:pointer;}
-.site-header.scrolled .logo{color:var(--ink);}
-.logo-mark{width:34px;height:34px;flex-shrink:0;filter:drop-shadow(0 0 6px rgba(255,225,138,.55));}
-.logo-text{font-family:var(--serif);font-size:1.3rem;font-weight:600;display:flex;flex-direction:column;line-height:1.1;}
-.logo-text small{font-family:var(--sans);font-weight:500;font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;opacity:.75;}
+.logo{display:flex;align-items:center;cursor:pointer;}
+.logo-img{
+  height:54px;width:auto;display:block;border-radius:12px;background:#fff;
+  padding:4px 12px;box-shadow:0 6px 18px rgba(0,0,0,.18);transition:transform .25s ease;
+}
+.logo:hover .logo-img{transform:translateY(-2px);}
 .main-nav{display:flex;align-items:center;gap:28px;}
 .main-nav a{
   color:#fff;font-weight:600;font-size:.92rem;position:relative;transition:color .3s,opacity .3s;
@@ -277,7 +278,7 @@ p{margin:0;}
 /* ===== Footer ===== */
 .site-footer{background:var(--night);padding:40px 28px 50px;text-align:center;border-top:1px solid rgba(255,255,255,.07);}
 .footer-inner{display:flex;flex-direction:column;gap:8px;align-items:center;color:#9aa1b5;}
-.footer-inner .logo-spark{color:var(--firefly);filter:drop-shadow(0 0 6px var(--firefly));font-size:1.4rem;margin-bottom:4px;}
+.footer-logo-img{height:46px;width:auto;background:#fff;border-radius:10px;padding:4px 10px;margin-bottom:6px;}
 .footer-fine{font-size:.82rem;opacity:.7;}
 
 /* ===== Responsive ===== */
@@ -305,11 +306,10 @@ p{margin:0;}
 
 @media (max-width:700px){
   .header-inner{padding:14px 20px;}
-  .logo-text{font-size:1.1rem;}
-  .logo-text small{font-size:.55rem;}
+  .logo-img{height:42px;}
 
   .hero{min-height:100vh;align-items:flex-start;padding-bottom:0;}
-  .hero-content{margin-top:78px;padding:0 20px;}
+  .hero-content{margin-top:112px;padding:0 20px;}
   .eyebrow{font-size:.72rem;margin-bottom:12px;}
   .hero h1{font-size:clamp(2.1rem,9vw,2.8rem);}
   .hero-sub{font-size:1rem;margin-top:16px;}
